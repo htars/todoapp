@@ -60,4 +60,15 @@ export class TodoListModel extends EventEmitter {
     todo.completed = completed;
     this.emitChange();
   }
+
+  /**
+   * 引数のID意外のタスク一覧を残す
+   * @param {int} id タスクID
+   */
+  deleteTodo({ id }) {
+    this.items = this.items.filter((item) => {
+      return item.id !== id;
+    });
+    this.emitChange();
+  }
 }
