@@ -47,4 +47,17 @@ export class TodoListModel extends EventEmitter {
     this.items.push(todoItem);
     this.emitChange();
   }
+
+  /**
+   * タスクの完了状態を反転させる
+   * @param {int} id タスクID
+   * @param {boolean} completed 完了状態
+   */
+  updateTodo({ id, completed }) {
+    const todo = this.items.find((item) => {
+      return item.id === id;
+    });
+    todo.completed = completed;
+    this.emitChange();
+  }
 }
